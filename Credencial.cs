@@ -31,6 +31,13 @@ namespace EntityFrameworkRelationships
         [ForeignKey("credencial_id")]
         public List<Perfil>? Perfis { get; set; }
 
+        #region Constructors
+        public Credencial()
+        {
+            Perfis = new();
+        }
+        #endregion
+
         #region ToString
         public override String ToString()
         {
