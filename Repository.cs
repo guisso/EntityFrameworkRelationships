@@ -8,6 +8,11 @@ namespace EntityFrameworkRelationships
         private static readonly String _connectionParams = @"server=127.0.0.1;port=3306;uid=root;pwd=;database=basicpersistence";
 
         public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<Credencial> Credenciais { get; set; }
+        public DbSet<Perfil> Perfis { get; set; }
+        public DbSet<Telefone> Telefones { get; set; }
+        public DbSet<UsuarioEndereco> UsuariosEnderecos { get; set; }
+        public DbSet<Endereco> Enderecos { get; set; }
 
         public Repository() => this.Database.EnsureCreated();
 
