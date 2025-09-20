@@ -7,6 +7,7 @@ namespace EntityFrameworkRelationships
         public static void Main(string[] args)
         {
             Console.WriteLine("EntityFrameworkRelationships running");
+            new Repository();
         }
     }
 }
