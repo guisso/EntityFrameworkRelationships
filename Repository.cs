@@ -6,7 +6,7 @@ namespace EntityFrameworkRelationships
     public class Repository : DbContext
     {
         private static readonly String _connectionParams = @"server=127.0.0.1;port=3306;uid=root;pwd=;database=basicpersistence";
-        
+
         public DbSet<Usuario> Usuarios { get; set; }
 
         public Repository() => this.Database.EnsureCreated();
@@ -15,6 +15,27 @@ namespace EntityFrameworkRelationships
         {
             base.OnConfiguring(optionsBuilder);
             optionsBuilder.UseMySQL(_connectionParams);
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<UsuarioEndereco>(
+                entity =>
+                {
+                    // Composite primary key
+                    entity
+                        .HasKey(ue => new { ue.UsuarioId, ue.EnderecoId });
+
+                    // Change foreign key names
+                    entity
+                        .Property(ue => ue.UsuarioId)
+                        .HasColumnName("usuario_id");
+                    entity
+                        .Property(ue => ue.EnderecoId)
+                        .HasColumnName("endereco_id");
+                });
         }
     }
 }

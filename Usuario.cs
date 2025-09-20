@@ -23,11 +23,10 @@ namespace EntityFrameworkRelationships
 
         // WARNING : In bidirectional relationships, no Fluente API is needed
         // TODO : Implement automatic bidirectional one-to-one relationship
-        [ForeignKey("usuario_id")]
-        public List<Endereco>? Enderecos { get; set; }
+        public List<UsuarioEndereco>? UsuariosEnderecos { get; set; }
 
         // TODO : Implement AdicionarTelefone() method
-        // TODO : Implement AdicionarEnderecos() method
+        // TODO : Implement AdicionarUsuarioEndereco() method
 
         #region ToString
         public override String ToString()

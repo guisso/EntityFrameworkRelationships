@@ -32,11 +32,6 @@ namespace EntityFrameworkRelationships
         [Required]
         public UInt32? Cep { get; set; }
 
-        [ForeignKey("endereco_id")]
-        public List<Usuario>? Usuarios { get; set; }
-
-        // TODO : Implement AdicionarUsuario() method
-
         #region ToString
         public override String ToString()
         {
@@ -45,9 +40,7 @@ namespace EntityFrameworkRelationships
                 + ", " + Logradouro
                 + ", " + Numero
                 + ", " + Bairro
-                + ", " + Cep
-                + ", Usuarios: "
-                + Usuarios?.Select(u => u.Id.ToString()) ?? "---";
+                + ", " + Cep;
         }
         #endregion
     }
