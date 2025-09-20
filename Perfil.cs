@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EntityFrameworkRelationships
 {
@@ -17,5 +18,10 @@ namespace EntityFrameworkRelationships
         public Boolean? Escrever { get; set; }
 
         public Boolean? Excluir { get; set; }
+
+        [ForeignKey("perfil_id")]
+        public List<Credencial>? Credenciais { get; set; }
+
+        // TODO : Implement AdicionarCredencial() method
     }
 }

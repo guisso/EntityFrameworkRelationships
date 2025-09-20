@@ -28,6 +28,9 @@ namespace EntityFrameworkRelationships
         [ForeignKey("usuario_id")]
         public Usuario? Usuario { get; set; }
 
+        [ForeignKey("credencial_id")]
+        public List<Perfil>? Perfis { get; set; }
+
         #region ToString
         public override String ToString()
         {
