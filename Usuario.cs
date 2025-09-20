@@ -37,10 +37,9 @@ namespace EntityFrameworkRelationships
                 + ", Telefones: " + (Telefones is null
                     ? "---"
                     : $"[{String.Join(", ", Telefones)}]")
-                    + ", Enderecos: " 
-                    + (Enderecos is null
-                        ? "---"
-                        : $"[{String.Join(", ", Enderecos)}]");
+                + ", Enderecos: " + (UsuariosEnderecos is null
+                    ? "---"
+                    : $"[{String.Join(", ", UsuariosEnderecos)}]");
         }
         #endregion
     }

@@ -16,5 +16,11 @@ namespace EntityFrameworkRelationships
         public Endereco? Endereco { get; set; }
 
         // TODO: Implement automatic bidirectional many-to-many relationship
+
+        public override String ToString()
+        {
+            return "Usuario: [" + Usuario?.Id + "]"
+                + ", Endereco: [" + Endereco?.Id + "]";
+        }
     }
 }
