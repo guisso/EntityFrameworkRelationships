@@ -20,6 +20,8 @@ namespace EntityFrameworkRelationships
         [Required]
         [MinLength(8)]
         [MaxLength(20)]
+        [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,20}$",
+            ErrorMessage = "A senha deve ter no mínimo 8 e no máximo 20 caracteres, incluindo pelo menos uma letra maiúscula, uma letra minúscula, um número e um caractere especial.")]
         public String? Senha { get; set; }
 
         [Required]

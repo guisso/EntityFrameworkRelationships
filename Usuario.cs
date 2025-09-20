@@ -1,12 +1,13 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace EntityFrameworkRelationships
 {
     public class Usuario
     {
-        public Int64 Id { get; set; }
+        public UInt64 Id { get; set; }
 
         // TODO : Implement constraints in the UML class diagram
         [Required]
@@ -20,7 +21,13 @@ namespace EntityFrameworkRelationships
         // TODO : Implement automatic bidirectional one-to-one relationship
         public List<Telefone>? Telefones { get; set; }
 
+        // WARNING : In bidirectional relationships, no Fluente API is needed
+        // TODO : Implement automatic bidirectional one-to-one relationship
+        [ForeignKey("usuario_id")]
+        public List<Endereco>? Enderecos { get; set; }
+
         // TODO : Implement AdicionarTelefone() method
+        // TODO : Implement AdicionarEnderecos() method
 
         #region ToString
         public override String ToString()
@@ -30,7 +37,11 @@ namespace EntityFrameworkRelationships
                 + ", Credencial: " + Credencial
                 + ", Telefones: " + (Telefones is null
                     ? "---"
-                    : $"[{String.Join(", ", Telefones)}]");
+                    : $"[{String.Join(", ", Telefones)}]")
+                    + ", Enderecos: " 
+                    + (Enderecos is null
+                        ? "---"
+                        : $"[{String.Join(", ", Enderecos)}]");
         }
         #endregion
     }

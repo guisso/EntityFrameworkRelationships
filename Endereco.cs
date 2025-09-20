@@ -1,5 +1,7 @@
 ﻿using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EntityFrameworkRelationships
 {
@@ -29,6 +31,24 @@ namespace EntityFrameworkRelationships
         // TODO : Implement constraints in the UML class diagram
         [Required]
         public UInt32? Cep { get; set; }
-        
+
+        [ForeignKey("endereco_id")]
+        public List<Usuario>? Usuarios { get; set; }
+
+        // TODO : Implement AdicionarUsuario() method
+
+        #region ToString
+        public override String ToString()
+        {
+            return Id
+                + ", " + TipoLogradouro
+                + ", " + Logradouro
+                + ", " + Numero
+                + ", " + Bairro
+                + ", " + Cep
+                + ", Usuarios: "
+                + Usuarios?.Select(u => u.Id.ToString()) ?? "---";
+        }
+        #endregion
     }
 }
