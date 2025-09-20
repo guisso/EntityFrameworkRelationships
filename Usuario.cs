@@ -12,11 +12,17 @@ namespace EntityFrameworkRelationships
         [MaxLength(45)]
         public String? Nome { get; set; }
 
+        // TODO : Implement automatic bidirectional one-to-one relationship
+        // Foreign key is in Credencial class. I assumed it was DEPENDENT.
+        public Credencial? Credencial { get; set; }
+
         #region ToString
         public override String ToString()
         {
             return Id
-                + ", " + Nome;
+                + ", " + Nome
+                + ", " + Credencial?.Email
+                + ", " + Credencial?.Senha;
         }
         #endregion
     }

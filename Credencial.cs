@@ -1,8 +1,11 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EntityFrameworkRelationships
 {
+    [Index(nameof(Email), IsUnique = true)]
     public class Credencial
     {
         public UInt64 Id { get; set; }
@@ -18,5 +21,9 @@ namespace EntityFrameworkRelationships
         [MinLength(8)]
         [MaxLength(20)]
         public String? Senha { get; set; }
+
+        [Required]
+        [ForeignKey("usuario_id")]
+        public Usuario? Usuario { get; set; }
     }
 }
