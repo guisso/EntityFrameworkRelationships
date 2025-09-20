@@ -28,6 +28,13 @@ namespace EntityFrameworkRelationships
         // TODO : Implement AdicionarTelefone() method
         // TODO : Implement AdicionarUsuarioEndereco() method
 
+        #region Constructors
+        public Usuario() { 
+            Telefones = new();
+            UsuariosEnderecos = new();
+        }
+        #endregion
+
         #region ToString
         public override String ToString()
         {

@@ -22,6 +22,13 @@ namespace EntityFrameworkRelationships
         [ForeignKey("perfil_id")]
         public List<Credencial>? Credenciais { get; set; }
 
+        #region Constructors
+        public Perfil()
+        {
+            Credenciais = new();
+        }
+        #endregion
+
         // TODO : Implement AdicionarCredencial() method
     }
 }
