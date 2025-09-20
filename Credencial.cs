@@ -25,5 +25,15 @@ namespace EntityFrameworkRelationships
         [Required]
         [ForeignKey("usuario_id")]
         public Usuario? Usuario { get; set; }
+
+        #region ToString
+        public override String ToString()
+        {
+            return Id
+                + ", " + Email
+                + ", " + Senha
+                + ", Usuario: [" + Usuario?.Id + "]";
+        }
+        #endregion
     }
 }

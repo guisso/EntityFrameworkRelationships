@@ -27,9 +27,10 @@ namespace EntityFrameworkRelationships
         {
             return Id
                 + ", " + Nome
-                + ", " + Credencial?.Email
-                + ", " + Credencial?.Senha
-                + ", Telefones: " + (Telefones is null ? "---" : $"[{String.Join(", ", Telefones)}]");
+                + ", Credencial: " + Credencial
+                + ", Telefones: " + (Telefones is null
+                    ? "---"
+                    : $"[{String.Join(", ", Telefones)}]");
         }
         #endregion
     }
