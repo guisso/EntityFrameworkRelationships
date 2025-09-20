@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.Text;
 
 namespace EntityFrameworkRelationships
 {
@@ -16,13 +17,19 @@ namespace EntityFrameworkRelationships
         // Foreign key is in Credencial class. I assumed it was DEPENDENT.
         public Credencial? Credencial { get; set; }
 
+        // TODO : Implement automatic bidirectional one-to-one relationship
+        public List<Telefone>? Telefones { get; set; }
+
+        // TODO : Implement AdicionarTelefone() method
+
         #region ToString
         public override String ToString()
         {
             return Id
                 + ", " + Nome
                 + ", " + Credencial?.Email
-                + ", " + Credencial?.Senha;
+                + ", " + Credencial?.Senha
+                + ", Telefones: " + (Telefones is null ? "---" : $"[{String.Join(", ", Telefones)}]");
         }
         #endregion
     }
