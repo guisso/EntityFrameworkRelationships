@@ -16,12 +16,21 @@ namespace EntityFrameworkRelationships
                         //
                         // Pay attention to related entities!
                         // If they are not attached, EF Core will try to insert them again!
-                        // Attach related entities to avoid duplicate inserts
                         //
+                        foreach (Telefone t in usuario.Telefones)
+                        {
+                            if (t?.Id != null && t?.Id != 0)
+                            {
+                                // Attach related entities to avoid duplicate inserts
+                                dbContext.Enderecos.Attach(t);
+                            }
+                        }
+
                         foreach (UsuarioEndereco ue in usuario.UsuariosEnderecos)
                         {
-                            if (ue.Endereco != null)
+                            if (ue.Endereco?.Id != null && ue.Endereco?.Id != 0)
                             {
+                                // Attach related entities to avoid duplicate inserts
                                 dbContext.Enderecos.Attach(ue.Endereco);
                             }
                         }
@@ -33,9 +42,24 @@ namespace EntityFrameworkRelationships
                         //
                         // Pay attention to related entities!
                         // If they are not attached, EF Core will try to insert them again!
-                        // Attach related entities to avoid duplicate inserts
                         //
-                        // ? ? ? ? //
+                        foreach (Telefone t in usuario.Telefones)
+                        {
+                            if (t?.Id != null && t?.Id != 0)
+                            {
+                                // Attach related entities to avoid duplicate inserts
+                                dbContext.Telefones.Attach(t);
+                            }
+                        }
+
+                        foreach (UsuarioEndereco ue in usuario.UsuariosEnderecos)
+                        {
+                            if (ue.UsuarioId != null && ue.UsuarioId != 0)
+                            {
+                                // Attach related entities to avoid duplicate inserts
+                                dbContext.UsuariosEnderecos.Attach(ue);
+                            }
+                        }
 
                         dbContext.Entry(usuario).State
                             = EntityState.Modified;
